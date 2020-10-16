@@ -13,11 +13,13 @@ pdb
 ```
 
 <h3> Training the NLI (TE+Clf.) Model with joint objective and constraint regularisation. </h3>
+
 ```
 python nli_train.py
 ```
 
 <h3> Training the Classification Model </h3>
+
 ```
 python clf_train.py
 ```
