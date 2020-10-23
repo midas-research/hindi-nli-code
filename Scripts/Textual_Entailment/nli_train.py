@@ -23,9 +23,9 @@ def get_args():
   parser.add_argument("--outputmodelname", type=str, default='constraint.pickle')
   
   # data
-  parser.add_argument("--train_data", type=str, default='./sentiment_data/Product_Review_Dataset/recasted_train_with_negation.tsv', help="data file containing the context-hypothesis pair along with the nli label.")
-  parser.add_argument("--val_data", type=str, default='./sentiment_data/Product_Review_Dataset/recasted_dev_with_negation.tsv', help="data file containing the context-hypothesis pair along with the nli label.")
-  parser.add_argument("--test_data", type=str, default='./sentiment_data/Product_Review_Dataset/recasted_test_with_negation.tsv', help="data file containing the context-hypothesis pair along with the nli label.")
+  parser.add_argument("--train_data", type=str, default='./Product_Review_Dataset/recasted_train_with_negation.tsv', help="data file containing the context-hypothesis pair along with the nli label.")
+  parser.add_argument("--val_data", type=str, default='./Product_Review_Dataset/recasted_dev_with_negation.tsv', help="data file containing the context-hypothesis pair along with the nli label.")
+  parser.add_argument("--test_data", type=str, default='./Product_Review_Dataset/recasted_test_with_negation.tsv', help="data file containing the context-hypothesis pair along with the nli label.")
   parser.add_argument("--max_train_sents", type=int, default=10000000, help="Maximum number of training examples")
   parser.add_argument("--max_val_sents", type=int, default=10000000, help="Maximum number of validation/dev examples")
   parser.add_argument("--max_test_sents", type=int, default=10000000, help="Maximum number of test examples")

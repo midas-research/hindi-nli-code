@@ -25,9 +25,9 @@ def get_args():
   parser.add_argument('--cuda', type=bool, default=True, help="run the following code on a GPU")
 
   # data
-  parser.add_argument("--train_data", type=str, default='../sentiment_data/Product_Review_Dataset/PR_train_data.tsv', help="train data file containing the text-label.")
-  parser.add_argument("--val_data", type=str, default='../sentiment_data/Product_Review_Dataset/PR_dev_data.tsv', help="val data file containing the text-label.")
-  parser.add_argument("--test_data", type=str, default='../sentiment_data/Product_Review_Dataset/PR_test_data.tsv', help="test data file containing the text-label.")
+  parser.add_argument("--train_data", type=str, default='./Product_Review_Dataset/PR_train_data.tsv', help="train data file containing the text-label.")
+  parser.add_argument("--val_data", type=str, default='./Product_Review_Dataset/PR_dev_data.tsv', help="val data file containing the text-label.")
+  parser.add_argument("--test_data", type=str, default='./Product_Review_Dataset/PR_test_data.tsv', help="test data file containing the text-label.")
   parser.add_argument("--max_train_sents", type=int, default=10000000, help="Maximum number of training examples")
   parser.add_argument("--max_val_sents", type=int, default=10000000, help="Maximum number of validation/dev examples")
   parser.add_argument("--max_test_sents", type=int, default=10000000, help="Maximum number of test examples")
