@@ -19,8 +19,14 @@ All the data used for experimentation is available at <a href="https://github.co
 
 To train the Textual Entailment model with Two-Step Classification, use
 ```
+python nli_train_joint.py
+```
+To train the Textual Entailment model individually, use
+```
 python nli_train.py
 ```
+Use the argument `is_cr=True` to train using consistency regularization. Else, turn `is_cr=False`.
+
 To train the Direct Classification model, use
 ```
 python clf_train.py
