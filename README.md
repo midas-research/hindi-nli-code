@@ -1,10 +1,10 @@
 # hindi-nli-code
 
 Implementation of the AACL-IJCNLP 2020 paper: <b>Two-Step Classification using Recasted Data for Low Resource Settings</b>. <br>
-Explore the opensource dataset at <a href="https://github.com/midas-research/hindi-nli-data">hindi-nli-data</a>.
 
 <h3> Requirements </h3>
 
+All the code in this repo is built with PyTorch.
 ```
 python3.5+
 pytorch1.4.0
@@ -12,14 +12,32 @@ numpy
 pdb
 ```
 
-<h3> Training the NLI (TE+Clf.) Model with joint objective and constraint regularisation. </h3>
+<h3> Data </h3>
+All the data used for experimentation is available at <a href="https://github.com/midas-research/hindi-nli-data">hindi-nli-data</a> with train, test and development set splits.
 
+<h3> Training </h3>
+
+To train the Textual Entailment model with Two-Step Classification, use
 ```
 python nli_train.py
 ```
-
-<h3> Training the Classification Model </h3>
-
+To train the Direct Classification model, use
 ```
 python clf_train.py
 ```
+
+Some important command line arguments:
+- `train_data` - Dataset directory followed by the file containing training data
+- `test_data` - Dataset directory followed by the file containing test data
+- `val_data` - Dataset directory followed by the file containing validation data
+- `n_classes_clf` - Number of classes in the original classification task of the dataset being used
+
+
+<h3> Bibliograhy </h3>
+If ouy use our dataset or code, please cite using 
+
+```
+Available Soon
+```
+
+
