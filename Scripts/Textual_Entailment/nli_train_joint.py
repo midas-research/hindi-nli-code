@@ -23,28 +23,28 @@ def get_args():
   parser.add_argument("--outputmodelname", type=str, default='constraint.pickle')
   
   # data
-  parser.add_argument("--train_data", type=str, default='./sentiment_data/Product_Review_Dataset/recasted_train_with_negation.tsv', help="data file containing the context-hypothesis pair along with the nli label.")
-  parser.add_argument("--val_data", type=str, default='./sentiment_data/Product_Review_Dataset/recasted_dev_with_negation.tsv', help="data file containing the context-hypothesis pair along with the nli label.")
-  parser.add_argument("--test_data", type=str, default='./sentiment_data/Product_Review_Dataset/recasted_test_with_negation.tsv', help="data file containing the context-hypothesis pair along with the nli label.")
+  parser.add_argument("--train_data", type=str, default='./Product_Review_Dataset/recasted_train_with_negation.tsv', help="data file containing the context-hypothesis pair along with the nli label.")
+  parser.add_argument("--val_data", type=str, default='./Product_Review_Dataset/recasted_dev_with_negation.tsv', help="data file containing the context-hypothesis pair along with the nli label.")
+  parser.add_argument("--test_data", type=str, default='./Product_Review_Dataset/recasted_test_with_negation.tsv', help="data file containing the context-hypothesis pair along with the nli label.")
   parser.add_argument("--max_train_sents", type=int, default=10000000, help="Maximum number of training examples")
   parser.add_argument("--max_val_sents", type=int, default=10000000, help="Maximum number of validation/dev examples")
   parser.add_argument("--max_test_sents", type=int, default=10000000, help="Maximum number of test examples")
   
   # training
-  parser.add_argument("--n_epochs", type=int, default=10)
-  parser.add_argument("--n_classes", type=int, default=2)
-  parser.add_argument("--n_sentiment", type=int, default=4)
+  parser.add_argument("--n_epochs", type=int, default=15)
+  parser.add_argument("--n_classes_nli", type=int, default=2)
+  parser.add_argument("--n_classes_clf", type=int, default=4)
   parser.add_argument("--batch_size", type=int, default=128)
   parser.add_argument("--dpout_model", type=float, default=0., help="encoder dropout")
   parser.add_argument("--dpout_fc", type=float, default=0., help="classifier dropout")
-  parser.add_argument("--optimizer", type=str, default="adam,lr=0.0001", help="adam or sgd,lr=0.1")
+  parser.add_argument("--optimizer", type=str, default="adam,lr=0.001", help="adam or sgd,lr=0.1")
   parser.add_argument("--lrshrink", type=float, default=5., help="shrink factor for sgd")
-  parser.add_argument("--decay", type=float, default=0.99, help="lr decay")
+  parser.add_argument("--decay", type=float, default=0.9, help="lr decay")
   parser.add_argument("--minlr", type=float, default=1e-5, help="minimum lr")
-  parser.add_argument("--is_cr", type=bool, default=True, help="whether or not to include constranit regularization while training")
   
   parser.add_argument("--embedding_size", type=int, default=1024, help="sentence embedding size in the trained embedding model")
   parser.add_argument("--max_norm", type=int, default=5., help="maximum norm value")
+  parser.add_argument("--reg_lambda", type=int, default=2., help="lambda for supervised loss")
   
   # gpu
   parser.add_argument("--gpu_id", type=int, default=0, help="GPU ID")
@@ -78,7 +78,7 @@ def get_ordered_batch(context, hypothesis, target):
 def trainepoch(epoch, train, optimizer, args, nli_net, loss_fn, loss_mse):
   nli_net.train()
   print('\nTRAINING : Epoch ' + str(epoch))
-  # bhaav: adam 0.01
+  
   nli_net.train()
   all_costs = []
   logs = []
@@ -133,11 +133,9 @@ def trainepoch(epoch, train, optimizer, args, nli_net, loss_fn, loss_mse):
     assert len(pred) == len(h_wo_n)
 
     supervised_loss = loss_fn(op_wo_vector, t_wo_n)
-    if(args.is_cr):
-      constraint_loss = loss_mse(p_wo_vector, torch.ones_like(p_wo_vector)-p_w_vector)
-      loss = 2 * supervised_loss + constraint_loss
-    else:
-      loss = supervised_loss
+    constraint_loss = loss_mse(p_wo_vector, torch.ones_like(p_wo_vector)-p_w_vector)
+
+    loss = args.reg_lambda * supervised_loss + constraint_loss
 
     all_costs.append(loss.item())
     
@@ -168,8 +166,7 @@ def trainepoch(epoch, train, optimizer, args, nli_net, loss_fn, loss_mse):
       trained_sents += len(t_wo_n)
       counter += 1
       print("supervised_loss: ", supervised_loss.item())
-      if(args.is_cr):
-        print("constraint_loss: ", constraint_loss.item())
+      print("constraint_loss: ", constraint_loss.item())
       print("Total_loss: ", loss.item())
       print ("epoch: %d -- correct %d / %d trained  ----- accuracy %d " % (epoch, correct, trained_sents, ((correct * 100 ) / trained_sents).item()))
       
