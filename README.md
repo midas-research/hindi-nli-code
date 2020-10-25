@@ -15,6 +15,15 @@ pdb
 <h3> Data </h3>
 All the data used for experimentation is available at <a href="https://github.com/midas-research/hindi-nli-data">hindi-nli-data</a> with train, test and development set splits.
 
+<h3> Approach </h3>
+
+<br>
+<p align="center">
+  <img src="https://github.com/midas-research/hindi-nli-code/blob/master/Our_Approach.png" alt="recasted-samples"  width="95%"/>
+  <br>
+</p>
+<br>
+
 <h3> Training </h3>
 
 To train the Textual Entailment model with Two-Step Classification with the joint objective, use
