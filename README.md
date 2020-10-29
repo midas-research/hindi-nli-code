@@ -46,6 +46,8 @@ To evaluate the accuracy of the trained models for both Textual Entailment and C
 
 To evaluate the inconsistency results, run the script ```python inconsistency.py``` in the Textual Entailment folder.
 
+For results in the semi-supervised setting (appendix), use the desired percentage from the training data without modifying test and dev sets.
+
 Some important command line arguments:
 - `train_data` - Dataset directory followed by the file containing training data
 - `test_data` - Dataset directory followed by the file containing test data
