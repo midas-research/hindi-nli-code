@@ -244,8 +244,6 @@ def main(args):
   train, val, test = get_nli_hypoth(args.train_data, args.val_data, args.test_data, args.max_train_sents, args.max_val_sents, args.max_test_sents)
 
   nli_net = NLI_HYPOTHS_Net()
-  if(args.load_saved):
-    nli_net = torch.load('./saved_models/nli_models/model_nli_BHAAV_2.pickle')
   
   # loss
   loss_fn = nn.CrossEntropyLoss()
