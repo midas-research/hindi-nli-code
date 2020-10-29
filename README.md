@@ -40,6 +40,12 @@ To train the Direct Classification model, use
 python clf_train.py
 ```
 
+<h3> Testing </h3>
+
+To evaluate the accuracy of the trained models for both Textual Entailment and Classification, run the script ```python evaluate.py``` in their respective folders.
+<br>
+To evaluate the inconsistency results, run the script ```python inconsistency.py``` in the Textual Entailment folder.
+
 Some important command line arguments:
 - `train_data` - Dataset directory followed by the file containing training data
 - `test_data` - Dataset directory followed by the file containing test data
