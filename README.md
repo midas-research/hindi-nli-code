@@ -27,15 +27,15 @@ After downloading the data, use the arguments ```train_data``` , `test_data` and
 
 <h3> Training </h3>
 
-To train the Textual Entailment model with Two-Step Classification with the joint objective, use
-```
-python nli_train_joint.py
-```
-To train the Textual Entailment model without the joint objective, use
+To independently train the Textual Entailment model (<b>TE</b>) without the joint objective, use
 ```
 python nli_train.py
 ```
-Use the argument `is_cr=True` to train using consistency regularization. Else, turn `is_cr=False`.
+To train the Textual Entailment model along with Two-Step Classification (i.e. with the joint objective - <b>TE + JO</b>), use
+```
+python nli_train_joint.py
+```
+In order to train using the consistency regularization technique (<b>+CR</b>), use the argument `is_cr=True`, else turn `is_cr=False`.
 
 To train the Direct Classification model, use
 ```
@@ -50,11 +50,28 @@ To evaluate the inconsistency results, run the script ```python inconsistency.py
 
 For results in the semi-supervised setting (appendix), use the desired percentage from the training data without modifying test and dev sets.
 
-Some important command line arguments:
+Following is a guide to the command line arguments that can help training with the desired setting:
+
 - `train_data` - Dataset directory followed by the file containing training data
 - `test_data` - Dataset directory followed by the file containing test data
 - `val_data` - Dataset directory followed by the file containing validation data
 - `n_classes_clf` - Number of classes in the original classification task of the dataset being used
+- `max_train_sents` - Maximum number of training examples
+- `max_test_sents` - Maximum number of testing examples
+- `max_val_sents` - Maximum number of validation examples
+- `n_epochs` - Number of epochs to run the training for
+- `n_classes` - Number of classes for the textual entailment task, which is 2 irrespective of the dataset (<i>entailed</i> and <i>not-entailed</i>)
+- `n-sentiment` - Number of classes for the classification task
+- `batch_size` - Number of data samples in the batch for each iteration
+- `dpout_model` - Dropout rate for the encoder network
+- `dpout_fc` - Dropout rate for the classifier network
+- `optimizer` - To choose the type of the optimizer for training (SGD or Adam)
+- `lr_shrink` - Shrink factor for SGD
+- `decay` - Decay factor for learning rate
+- `minlr` - Minimum learning rate
+- `is_cr` - True for training with consistency regularization, otherwise False
+- `embedding_size` - Embedding size of the sentence embedding model used
+- `max_norm` - Maximum norm for the gradients
 
 
 <h3> Bibliograhy </h3>
