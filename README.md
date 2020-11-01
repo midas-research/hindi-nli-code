@@ -22,7 +22,7 @@ pdb
 
 <h3> Data </h3>
 All the data used for experimentation is available at <a href="https://github.com/midas-research/hindi-nli-data">hindi-nli-data</a> with train, test and development set splits.
-After downloading the data, use the arguments ```train_data```, ```test_data``` and ```val_data``` in the scripts in order to set the directory containing the respective ```.tsv``` files.
+After downloading the data, use the arguments `train_data`, `test_data` and `val_data` in the scripts in order to set the directory containing the respective `.tsv` files.
 
 <h3> Training </h3>
 
