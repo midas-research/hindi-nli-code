@@ -48,6 +48,8 @@ To evaluate the accuracy of the trained models for both Textual Entailment and C
 
 To evaluate the inconsistency results, run the script ```python inconsistency.py``` in the Textual Entailment folder.
 
+To evaluate the comparison results between Direct Classification and Two-Step Classification approaches, run the script ```python comparison.py``` in the Textual Entailment folder.
+
 For results in the semi-supervised setting (appendix), use the desired percentage from the training data without modifying test and dev sets.
 
 Following is a guide to the command line arguments that can help training with the desired setting:
