@@ -1,6 +1,6 @@
 # hindi-nli-code
 
-Implementation of the AACL-IJCNLP 2020 paper: <b>Two-Step Classification using Recasted Data for Low Resource Settings</b>.
+Implementation of the AACL-IJCNLP 2020 paper: [Two-Step Classification using Recasted Data for Low Resource Settings](https://shagunuppal.github.io/pdf/AACL_IJCNLP_Hindi_NLI.pdf).
 
 <br>
 <p align="center">
