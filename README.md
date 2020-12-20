@@ -80,7 +80,24 @@ Following is a guide to the command line arguments that can help training with t
 If ouy use our dataset or code, please cite using 
 
 ```
-Available Soon
+@inproceedings{uppal-etal-2020-two,
+    title = "Two-Step Classification using Recasted Data for Low Resource Settings",
+    author = "Uppal, Shagun  and
+      Gupta, Vivek  and
+      Swaminathan, Avinash  and
+      Zhang, Haimin  and
+      Mahata, Debanjan  and
+      Gosangi, Rakesh  and
+      Shah, Rajiv Ratn  and
+      Stent, Amanda",
+    booktitle = "Proceedings of the 1st Conference of the Asia-Pacific Chapter of the Association for Computational Linguistics and the 10th International Joint Conference on Natural Language Processing",
+    month = dec,
+    year = "2020",
+    address = "Suzhou, China",
+    publisher = "Association for Computational Linguistics",
+    url = "https://www.aclweb.org/anthology/2020.aacl-main.71",
+    pages = "706--719",
+    abstract = "An NLP model{'}s ability to reason should be independent of language. Previous works utilize Natural Language Inference (NLI) to understand the reasoning ability of models, mostly focusing on high resource languages like English. To address scarcity of data in low-resource languages such as Hindi, we use data recasting to create NLI datasets for four existing text classification datasets. Through experiments, we show that our recasted dataset is devoid of statistical irregularities and spurious patterns. We further study the consistency in predictions of the textual entailment models and propose a consistency regulariser to remove pairwise-inconsistencies in predictions. We propose a novel two-step classification method which uses textual-entailment predictions for classification task. We further improve the performance by using a joint-objective for classification and textual entailment. We therefore highlight the benefits of data recasting and improvements on classification performance using our approach with supporting experimental results.",
 ```
 
 
